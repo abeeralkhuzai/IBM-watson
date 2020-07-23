@@ -1,0 +1,268 @@
+{
+  "intents": [
+    {
+      "intent": "Greetings",
+      "examples": [
+        {
+          "text": "hi"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "COVID_Case_Count",
+      "examples": [
+        {
+          "text": "what is the count of coronavirus infected people?"
+        },
+        {
+          "text": "Does MA have a confirmed COVID case?"
+        },
+        {
+          "text": "Does the US have a confirmed COVID case?"
+        },
+        {
+          "text": "has anyone died of coronavirus in my state?"
+        },
+        {
+          "text": "How has coronavirus spread around the world?"
+        },
+        {
+          "text": "how many cases are there in Texas?"
+        },
+        {
+          "text": "How many cases of COVID-19 are in the US?"
+        },
+        {
+          "text": "How many cases of the virus are there in the world?"
+        },
+        {
+          "text": "How many coronavirus cases are there in my area?"
+        },
+        {
+          "text": "how many current cases are there in Illinois"
+        },
+        {
+          "text": "How many folks in Texas are infected?"
+        },
+        {
+          "text": "how many patients are infected with corona virus in collin county"
+        },
+        {
+          "text": "how many people are sick in the US?"
+        },
+        {
+          "text": "how many people are infected"
+        },
+        {
+          "text": "How many people are infected in Illinois?"
+        },
+        {
+          "text": "How many people are infected with Corona virus currently in texas?"
+        },
+        {
+          "text": "How many people are sick throughout the world?"
+        },
+        {
+          "text": "how many people have contracted the virus in pennysylvania"
+        },
+        {
+          "text": "How many people have covid-19 in the whole world?"
+        },
+        {
+          "text": "How many people have the virus in our county"
+        },
+        {
+          "text": "how many people have the virus?"
+        },
+        {
+          "text": "how many people in texas have corona virus?"
+        },
+        {
+          "text": "Which countries has covid-19 been detected in?"
+        },
+        {
+          "text": "Where can I find information about covid 19 for the world?"
+        },
+        {
+          "text": "Where are cases?"
+        },
+        {
+          "text": "covid number in my state?"
+        },
+        {
+          "text": "is anyone near me sick"
+        },
+        {
+          "text": "how many ppl are infected in the us?"
+        },
+        {
+          "text": "How many people total have coronavirus?"
+        },
+        {
+          "text": "How many people in the world have died?"
+        },
+        {
+          "text": "are people infected in my city ?"
+        },
+        {
+          "text": "Are there any cases near me"
+        },
+        {
+          "text": "how many current cases are there in mecca?"
+        }
+      ],
+      "description": "Number of cases nearby."
+    },
+    {
+      "intent": "thank",
+      "examples": [
+        {
+          "text": "thank you"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    },
+    "from-sample": true
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "thank",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Your welcome"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#thank",
+      "dialog_node": "node_6_1595537787208",
+      "previous_sibling": "node_2_1595537770005"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_6_1595537787208",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Covid-19",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "119"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#COVID_Case_Count",
+      "dialog_node": "node_2_1595537770005",
+      "previous_sibling": "node_4_1595537739358"
+    },
+    {
+      "type": "standard",
+      "title": "Greet",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Greetings",
+      "dialog_node": "node_4_1595537739358",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
